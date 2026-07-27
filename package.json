@@ -1,6 +1,14 @@
 {
   "name": "first-question",
   "private": true,
-  "scripts": { "build": "vinext build", "dev": "vinext dev" },
-  "dependencies": { "react": "latest", "react-dom": "latest", "vinext": "latest" }
+  "scripts": {
+    "build": "vinext build",
+    "dev": "vinext dev"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest",
+    "vinext": "latest",
+    "@vitejs/plugin-rsc": "latest"
+  }
 }
