@@ -1,4 +1,5 @@
-﻿import './globals.css'
-import type { ReactNode } from 'react'
-export const metadata={title:'세특 스튜디오',description:'학생 활동을 세부능력 및 특기사항 초안으로 정리하는 교사 업무 보조 도구'}
-export default function Layout({children}:{children:ReactNode}){return <html lang="ko"><body>{children}</body></html>}
+import './globals.css';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = { title: '세특 스튜디오', description: '학생 활동 기록을 과목별 세특 초안으로 정리합니다.' };
+export default function RootLayout({ children }: { children: React.ReactNode }) { return <html lang="ko"><body>{children}</body></html>; }

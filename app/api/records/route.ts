@@ -1,0 +1,5 @@
+import { NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
+function db(){ const url=process.env.NEXT_PUBLIC_SUPABASE_URL, key=process.env.SUPABASE_SERVICE_ROLE_KEY; if(!url||!key) throw new Error('Supabase env missing'); return createClient(url,key); }
+export async function GET(){ try { const {data,error}=await db().from('setuk_records').select('*').order('created_at',{ascending:false}); if(error) throw error; return NextResponse.json({records:data}); } catch(e){ return NextResponse.json({error:'Supabase is not configured'},{status:503}); } }
+export async function POST(req:Request){ try { const {student,grade,keywords,results}=await req.json(); const rows=results.map((r:any)=>({student_identifier:student||'미입력',grade,subject:r.subject,activity_keywords:keywords,collection_summary:r.summary,draft_text:r.draft,reviewed_text:r.reviewed})); const {data,error}=await db().from('setuk_records').insert(rows).select(); if(error) throw error; return NextResponse.json({records:data}); } catch(e){ return NextResponse.json({error:'Supabase is not configured or insert failed'},{status:503}); } }
